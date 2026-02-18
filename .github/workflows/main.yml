@@ -1,0 +1,31 @@
+name: Optimized CI with Caching
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Required identification step
+      - name: 23f3000162@ds.study.iitm.ac.in
+        run: echo "Workflow for Sachin Jha"
+
+      # Step 1: Cache Setup
+      - name: Cache dependencies
+        id: cache-step
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: cache-c74e9aa
+
+      # Step 2: The specific step that was missing
+      - name: prime-cache-c74e9aa 
+        run: echo "Cache hit status is ${{ steps.cache-step.outputs.cache-hit }}"
